@@ -1,0 +1,23 @@
+{% load static %}
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>enter</title>
+  <link rel="preload" as="video" href="{{ video_src }}">
+  <link rel="preload" as="audio" href="{{ audio_src }}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="no-scroll">
+  <video id="bg-video" autoplay muted loop playsinline class="bg-video">
+    <source src="{{ video_src }}" type="video/mp4">
+  </video>
+  <div id="enter-overlay" class="enter-overlay">
+    <button id="enter-btn" class="enter-btn">click to enter...</button>
+  </div>
+  <audio id="bg-audio" src="{{ audio_src }}"></audio>
+  <script src="{% static 'js/intro.js' %}"></script>
+</body>
+</html>

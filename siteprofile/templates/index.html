@@ -1,0 +1,47 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ profile.display_name }}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="no-scroll">
+  <div id="intro" class="enter-overlay">
+    <button id="enter-btn" class="enter-btn">нажми если сосал...</button>
+  </div>
+
+  <div id="stage" class="wrap stage" aria-hidden="true">
+    <div class="card">
+      <img class="avatar" src="{{ profile.avatar.url }}" alt="avatar">
+      <div class="name animate-charcter">{{ profile.display_name }}</div>
+      <div class="links">
+        <a class="icon-link" href="{{ profile.discord_url }}" target="_blank" rel="noopener">
+          <img class="icon icon-white" src="{% static 'icons/discord.svg' %}" alt="discord">
+        </a>
+        <a class="icon-link" href="{{ profile.steam_url }}" target="_blank" rel="noopener">
+          <img class="icon icon-white" src="{% static 'icons/steam.svg' %}" alt="steam">
+        </a>
+        <a class="icon-link" href="{{ profile.telegram_url }}" target="_blank" rel="noopener">
+          <img class="icon icon-white" src="{% static 'icons/telegram.svg' %}" alt="telegram">
+        </a>
+      </div>
+      <div class="views">
+        <img class="eye icon-white" src="{% static 'icons/eye.svg' %}" alt="views">
+        <span id="views-count" class="views-count">{{ profile.views }}</span>
+      </div>
+    </div>
+  </div>
+
+  <audio id="bg-audio" preload="auto" src="{{ audio_src }}"></audio>
+
+  <script>
+    window.APP_CFG = {
+      videoSrc: "{{ video_src }}",
+      addViewUrl: "{% url 'add_view_api' %}"
+    };
+  </script>
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
